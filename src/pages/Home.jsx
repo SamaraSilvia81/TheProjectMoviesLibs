@@ -23,10 +23,14 @@ export const Home = () => {
 
     // <img src={`${movieIMG}${movie.poster_path}`}
     // <p>{movie.title}</p>
-    
+
     return ( 
-        <div>
-           {topMovies && topMovies.map((movie) => <p>{movie.title}</p>)}
+        <div className="container">
+            <h2 className="title">Melhores Filmes:</h2>
+            <div className="movies-container">
+            {topMovies.length === 0 && <p>Carregando...</p>}
+            {topMovies.length > 0 && topMovies.map((movie) => <p>{movie.title}</p>)}
+            </div>
         </div>
     )
 }
