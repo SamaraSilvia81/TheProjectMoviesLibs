@@ -11,10 +11,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
+import '../pages/MoviesGrid.css' 
+
 export function MovieCard({movie, showLink = true}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+    <Card sx={{ maxWidth: 345, marginBottom: 5 }}>
+      <CardActionArea 
+      sx={{'&:hover': {
+        transform: 1
+      }}}>
         <CardMedia
           component="img"
           image={imageURL + movie.poster_path}
@@ -25,14 +30,22 @@ export function MovieCard({movie, showLink = true}) {
             {movie.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <FaStar/> {movie.vote_average}
+            <FaStar color="#7b5eb6"/> {movie.vote_average}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          {showLink && <Link to={`/movie/${movie.id}`}>Detalhes</Link>}
+      {showLink && <Link to={`/movie/${movie.id}`}>
+        <Button 
+          sx={{backgroundColor: '#653DB6', width: '20em', height: '3em', marginLeft: '2em', '&:hover': { backgroundColor: '#7b5eb6'}
+          }}
+          size="small" 
+          variant="contained" 
+          color="primary"
+        >
+          Detalhes
         </Button>
+      </Link>}
       </CardActions>
     </Card>
   );
