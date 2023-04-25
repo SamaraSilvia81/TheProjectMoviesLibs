@@ -1,35 +1,62 @@
-import { useState, useEffect} from "react"
-import { MovieCard } from "../components/MovieCard";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import ProductHeroLayout from './LayoutHome';
 
-import './MoviesGrid.css' 
-
-const moviesURL = import.meta.env.VITE_API;
-const apiKey = import.meta.env.VITE_API_KEY;
+const images = [
+  'https://images6.alphacoders.com/673/673797.jpg',
+  'https://images6.alphacoders.com/311/311266.jpg',
+  'https://images7.alphacoders.com/671/671281.jpg',
+  'https://images5.alphacoders.com/744/744742.jpg',
+  'https://images8.alphacoders.com/669/669878.jpg',
+  'https://images6.alphacoders.com/714/714381.jpg',
+  /*'https://images.unsplash.com/photo-1534684686641-05569203ecca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80&w=1400',
+  'https://plus.unsplash.com/premium_photo-1667538962342-2d9937f014d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80&w=1400',
+  'https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80&w=1400'*/
+];
 
 export const Home = () => {
+  const [currentImage, setCurrentImage] = React.useState(0);
 
-    const [topMovies,setTopMovies] = useState([])
-    
-    // Vai fazer uma requisição
-    const getTopRatedMovies = async (url) => {
-        const res = await fetch(url);
-        const data = await res.json();
-        setTopMovies(data.results);
-    }
+  React.useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImage((currentImage + 1) % images.length);
+    }, 5000);
 
-    // É chamado quando a página renderiza
-    useEffect(() => {
-        const topRatedURL = `${moviesURL}top_rated?api_key=${apiKey}`
-        getTopRatedMovies(topRatedURL)
-    },[])
+    return () => clearInterval(intervalId);
+  }, [currentImage]);
 
-    return ( 
-        <div className="container">
-            <h2 className="title">Melhores Filmes:</h2>
-            <div className="movies-container">
-            {topMovies.length === 0 && <p>Carregando...</p>}
-            {topMovies.length > 0 && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie}/>)}
-            </div>
-        </div>
-    )
+  const backgroundImageStyle = {
+    backgroundImage: `url(${images[currentImage]})`,
+    backgroundColor: '#7fc7d9',
+    backgroundPosition: 'center',
+  };
+
+  return (
+    <ProductHeroLayout sxBackground={backgroundImageStyle}>
+      <Typography color="inherit" align="center" variant="h2" marked="center">
+        Movies Library
+      </Typography>
+      <Typography
+        color="inherit"
+        align="center"
+        variant="h5"
+        sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
+      >
+        "The first rule of Fight Club is: You do not talk about Fight Club."
+      </Typography>
+      <Button
+        sx={{ backgroundColor: "#653DB6", minWidth: 200, '&:hover': { backgroundColor: '#7b5eb6', color: "#ffff" } }}
+        variant="contained"
+        size="large"
+        component="a"
+        href="/movies/"
+      >
+        Movies
+      </Button>
+      <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
+        Discover the experience
+      </Typography>
+    </ProductHeroLayout>
+  );
 }

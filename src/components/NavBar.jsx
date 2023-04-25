@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -21,9 +21,6 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 
-const pages = ['Home', 'Movies', 'About'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -44,7 +41,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    paddingLeft: `calc(1em + ${theme.spacing(1)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -102,6 +99,22 @@ export function NavBar() {
     setSearch("")
   }
 
+  const navigateToPage = (page) => {
+    if (page === "Home") {
+      navigate("/");
+    } else if (page === "About") {
+      navigate("/about");
+    } else if (page === "Movies") {
+      navigate("/movies");
+    } else {
+      // navigate to other pages as usual
+      navigate(`/${page.toLowerCase()}`);
+    }
+  };
+
+  const pages = ["Home", "About", "Movies"];
+  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
   return (
     <AppBar position="static" sx = {{ background: "#23232e" }}>
       <Container maxWidth="xl">
@@ -117,11 +130,11 @@ export function NavBar() {
             display: { xs: 'none', md: 'flex' },
           }}
         >
-        <Avatar 
-          sx={{width: "8em", height:'5em', paddingBottom: 3}}
-          alt="Logo" 
-          src='https://user-images.githubusercontent.com/100232025/234320289-852956b7-48ec-4546-88f3-9c0ead9b3821.png' 
-        />
+          <Avatar 
+            sx={{width: "8em", height:'5em', paddingBottom: 3}}
+            alt="Logo" 
+            src='https://user-images.githubusercontent.com/100232025/234320289-852956b7-48ec-4546-88f3-9c0ead9b3821.png' 
+          />
         </Typography>
         
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -155,7 +168,7 @@ export function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page}  onClick={() => navigateToPage(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -184,7 +197,7 @@ export function NavBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => navigateToPage(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
