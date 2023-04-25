@@ -115,9 +115,9 @@ export function NavBar() {
           }}
         >
         <Avatar 
-          sx={{width: "10em", height:'8em'}}
+          sx={{width: "8em", height:'5em', paddingBottom: 3}}
           alt="Logo" 
-          src='https://user-images.githubusercontent.com/100232025/234303778-8184859c-3635-4105-b0fb-98768e1abc84.png' 
+          src='https://user-images.githubusercontent.com/100232025/234320289-852956b7-48ec-4546-88f3-9c0ead9b3821.png' 
         />
         </Typography>
         
@@ -172,9 +172,9 @@ export function NavBar() {
             }}
           >
             <Avatar 
-              sx={{width: "100%", marginRight: 13,paddingRight: 3}}
+              sx={{width: "8em", height: '5em',paddingBottom: 3}}
               alt="Logo" 
-              src='https://user-images.githubusercontent.com/100232025/234303778-8184859c-3635-4105-b0fb-98768e1abc84.png' 
+              src='https://user-images.githubusercontent.com/100232025/234320289-852956b7-48ec-4546-88f3-9c0ead9b3821.png' 
             />
           </Typography>
 
