@@ -26,7 +26,7 @@ export function Footer() {
     <Box sx={{ boxShadow: '0px 0px 10px 2px rgba(0,0,0,0.2)' }}>
     <Typography
       component="footer"
-       position="static"
+      position="static"
       sx={{ display: 'flex', backgroundColor: "#23232e", py: 6 }}
     >
       <Container sx={{ my: 'auto', display: 'flex', flexDirection: 'column' }}>
@@ -34,8 +34,10 @@ export function Footer() {
           <Grid item xs={12} sm={4}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Avatar
-                sx={{ width: '13em', height: '5em', paddingBottom: 3 }}
+                component="a"
+                href="/"
                 alt="Logo"
+                sx={{ width: '13em', height: '5em', paddingBottom: 3 }}
                 src="https://user-images.githubusercontent.com/100232025/234320289-852956b7-48ec-4546-88f3-9c0ead9b3821.png"
               />
             </Box>
