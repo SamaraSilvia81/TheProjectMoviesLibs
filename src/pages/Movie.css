@@ -2,8 +2,9 @@
     color: #FFF;
     display: flex;
     flex-direction: column;
-    max-width: 1400px;
-    margin: 2rem auto;
+    max-width: 60%;
+    margin: 8rem 15rem 1rem;
+    justify-content: center;
 }
 
 .movie-page svg {
@@ -12,29 +13,10 @@
 }
 
 .movie-details-container {
+    margin-bottom: 4rem;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     gap: 2rem;
-}
-
-.movie-details {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin-top: 5em;
-    gap: 1rem;
-}
-
-.info p{
-    margin-top: 1rem;
-}
-
-.description {
-    flex: 1;
-}
-
-.description p {
-    margin-top: 1rem;
 }
   
