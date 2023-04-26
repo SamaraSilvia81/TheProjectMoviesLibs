@@ -18,6 +18,8 @@ const iconStyle = {
   mr: 1,
   '&:hover': {
     color: '#7b5eb6',
+    transition: 'all 0.3s ease-in-out',
+    transform: 'scale(1.05)'
   },
 };
 
@@ -37,7 +39,15 @@ export function Footer() {
                 component="a"
                 href="/"
                 alt="Logo"
-                sx={{ width: '13em', height: '5em', paddingBottom: 3 }}
+                sx={{ 
+                  width: '13em', 
+                  height: '5em', 
+                  paddingBottom: 3,
+                  '&:hover': {
+                    transition: 'all 0.3s ease-in-out',
+                    transform: 'scale(1.05)'
+                  },
+                }}
                 src="https://user-images.githubusercontent.com/100232025/234320289-852956b7-48ec-4546-88f3-9c0ead9b3821.png"
               />
             </Box>
@@ -53,16 +63,16 @@ export function Footer() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={3}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Grid container justifyContent="center" spacing={1}>
                 <Grid item>
-                  <Box component="a" href=";" sx={iconStyle}>
+                  <Box component="a" href="https://github.com/SamaraSilvia81"  target="_blank" sx={iconStyle}>
                     <GitHubIcon/>
                   </Box>
                 </Grid>
                 <Grid item>
-                  <Box component="a" href="https://twitter.com/MUI_hq" sx={iconStyle}>
+                  <Box component="a" href="https://www.linkedin.com/in/samara-silvia-9a2a26231"  target="_blank" sx={iconStyle}>
                     <LinkedInIcon/>
                   </Box>
                 </Grid>
