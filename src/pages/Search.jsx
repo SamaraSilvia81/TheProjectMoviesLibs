@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { MovieCard } from "../components/MovieCard"
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Button, CircularProgress } from '@mui/material';
 
 import AlertMessage from '../pages/AlertMessage';
 
@@ -17,6 +17,8 @@ export const Search = () => {
     const [typeMessage, setTypeMessage] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+    const [loading, setLoading] = useState(true);
+
     // Vai fazer uma requisição
      const getSearchedMovies = async (url) => {
         try{
@@ -24,6 +26,7 @@ export const Search = () => {
             const data = await res.json();
             setMovies(data.results);
             setTypeMessage('success');
+            setLoading(false);
         } catch (error) {
             setTypeMessage('error');
         }
@@ -64,9 +67,14 @@ export const Search = () => {
                 maxWidth: "1200px", 
                 margin: "2 auto" 
             }}>
-                {movies.length > 0 &&
-                movies.map((movie) => 
-                <MovieCard key={movie.id} movie={movie} /> )}
+                {loading ? (
+                  <Button disabled variant="outlined" loadingPosition="start" sx={{ mt: 3, marginTop: 25}}>
+                    <CircularProgress size={24} sx={{ mr: 1 }} />
+                  </Button>
+                ) : (
+                  movies.map((movie) => 
+                  <MovieCard key={movie.id} movie={movie} /> )
+                )}
             </Grid>
         </Grid>
     )

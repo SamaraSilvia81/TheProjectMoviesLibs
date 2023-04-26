@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../components/MovieCard";
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Button, CircularProgress } from '@mui/material';
 import AlertMessage from '../pages/AlertMessage';
 
 const moviesURL = import.meta.env.VITE_API;
@@ -9,8 +9,11 @@ const apiKey = import.meta.env.VITE_API_KEY;
 export const Movies = () => {
 
     const [topMovies, setTopMovies] = useState([]);
+
     const [typeMessage, setTypeMessage] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+    const [loading, setLoading] = useState(true);
 
     // Vai fazer uma requisição
     const getTopRatedMovies = async (url) => {
@@ -19,8 +22,10 @@ export const Movies = () => {
             const data = await res.json();
             setTopMovies(data.results);
             setTypeMessage('success');
+            setLoading(false);
         } catch (error) {
             setTypeMessage('error');
+            setLoading(false);
         }
     };
 
@@ -66,9 +71,14 @@ export const Movies = () => {
                 maxWidth: "1200px", 
                 margin: "2 auto" 
             }}>
-                {topMovies.length > 0 &&
-                topMovies.map((movie) => 
-                <MovieCard key={movie.id} movie={movie} /> )}
+                {loading ? (
+                  <Button disabled variant="outlined" loadingPosition="start" sx={{ mt: 3, marginTop: 25}}>
+                    <CircularProgress size={24} sx={{ mr: 1 }} />
+                  </Button>
+                ) : (
+                  topMovies.map((movie) => 
+                  <MovieCard key={movie.id} movie={movie} /> )
+                )}
             </Grid>
         </Grid>
     )

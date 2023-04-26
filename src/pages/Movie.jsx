@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { BsGraphUp,  BsWallet2,  BsHourglassSplit, BsFillFileEarmarkTextFill } from 'react-icons/bs';
-import { Card, CardContent, Grid, Typography } from '@mui/material';
+import { Card, CardContent, Grid, Typography, Button, CircularProgress } from '@mui/material';
 
 import { MovieCard } from "../components/MovieCard"
 import AlertMessage from '../pages/AlertMessage';
@@ -19,14 +19,18 @@ export const Movie = () => {
     const [typeMessage, setTypeMessage] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+    const [loading, setLoading] = useState(true);
+
     const getMovie = async (url) => {
         try{
             const res = await fetch(url);
             const data = await res.json();
             setMovie(data);
             setTypeMessage('success');
+            setLoading(false);
         } catch(e){
             setTypeMessage('error');
+            setLoading(false);
         }
     }
 
