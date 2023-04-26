@@ -15,11 +15,17 @@ import '../pages/MoviesGrid.css'
 
 export function MovieCard({movie, showLink = true}) {
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: 5 }}>
-      <CardActionArea 
-      sx={{'&:hover': {
-        transform: 1
-      }}}>
+    <Card 
+      sx={{ 
+        maxWidth: 345, 
+        marginBottom: 5, 
+        '&:hover': {
+          transition: 'all 0.3s ease-in-out',
+          transform: 'scale(1.05)',
+        },
+      }}
+    >
+      <CardActionArea>
         <CardMedia
           component="img"
           image={imageURL + movie.poster_path}
