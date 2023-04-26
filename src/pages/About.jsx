@@ -1,32 +1,20 @@
-import React, { useState, useEffect } from 'react';
 import { Container, Grid, Typography, Button } from '@mui/material';
 
 export const About = () => {
 
-    const [user, setUser] = useState({avatar:''})
-
-    useEffect(() => {
-      async function fetchData() {
-        const response = await fetch('https://api.github.com/users/samarasilvia21')
-        const data = await response.json();
-        console.log("DATAS: ", data);
-        setUser({
-          avatar: data.avatar_url
-      });
-    }
-    fetchData();
-    },[]);
-
   return (
 
-    <section id='about' sx={{ bgcolor: '#8B5CF6', py: { xs: 6, md: 12 } }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 12 } }}>
         <Grid container spacing={4} alignItems="center">
           <Grid item xs={12} md={6}>
             <img
-              src={user.avatar}
-              alt="Profile Github"
-              style={{ maxWidth: '100%', height: 'auto', display: 'block', borderRadius: '2rem' }}
+              src={'https://user-images.githubusercontent.com/100232025/234586000-602890bc-ccb6-4d0e-8469-2e094f284d4a.png'}
+              alt="ProfileMe"
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
             />
           </Grid>
           <Grid item xs={12} md={6}>
@@ -34,7 +22,7 @@ export const About = () => {
               <Typography variant="h4" component="h2" color="#ffff" gutterBottom>
                 Samara Silvia
               </Typography>
-              <Typography variant="h6" component="h3" color="#ffff" gutterBottom>
+              <Typography variant="h6" component="h3" color="#7b5eb6"  sx={{ fontStyle: 'italic' }} gutterBottom>
                 Freelance Frontend Web Developer
               </Typography>
               <hr style={{ opacity: 0.5, margin: '1.5rem 0' }} />
@@ -42,9 +30,9 @@ export const About = () => {
                 Olá! Eu sou Samara. Eu tenho 19 anos e já fazem quase 2 anos que estou atuando na área de programação.
                 A cada dia que passa eu vou me superando e amando tecnologia cada vez mais. Por agora eu estou mais apegada ao front, mas também aprecio o back-end.
                 <br /><br />
-                Sobre o meio acadêmico, eu estou caminhando para o 4° período da minha graduação. Eu faço Sistemas para Internet na Universidade Católica de Pernambuco, por meio da bolsa de estudos do programa Embarque Digital.
+                No que diz respeito, ao projeto <span style={{color: '#7b5eb6'}}>Movies Library</span> ele, como o próprio nome já diz, é uma biblioteca de filmes dos mais variados gêneros. Nesse site, o usuário pode pesquisar por seu filme, visualizar os considerados Top 10, vê detalhes dos filmes e muito mais.
                 <br /><br />
-                Esse portfólio é resultado de um projeto passado para compor minha nota final. Espero que gostem!!!
+                O objetivo é proporcionar um ambiente de diversão e ao mesmo tempo entretenimento. Espero que gostem!!!
               </Typography>
               <Button
                 sx={{ 
@@ -68,6 +56,5 @@ export const About = () => {
           </Grid>
         </Grid>
       </Container>
-    </section>
   );
 };
