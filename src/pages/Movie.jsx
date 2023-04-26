@@ -45,7 +45,7 @@ export const Movie = () => {
     // Configura a mensagem de sucesso
     useEffect(() => {
         if (movie) {
-            const timer = setTimeout(() => setShowSuccessMessage(false), 1000);
+            const timer = setTimeout(() => setShowSuccessMessage(false), 600);
             setShowSuccessMessage(true);
             return () => clearTimeout(timer);
         } 
