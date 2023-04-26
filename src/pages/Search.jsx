@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import { MovieCard } from "../components/MovieCard"
+import { Grid, Typography } from '@mui/material';
 
 const searchURL = import.meta.env.VITE_SEARCH
 const apiKey = import.meta.env.VITE_API_KEY
-
-import './MoviesGrid.css'
 
 export const Search = () => {
 
@@ -27,12 +26,27 @@ export const Search = () => {
     },[query])
 
     return ( 
-        <div className="container">
-            <h2 className="title">Resultados para: <span className="query-text">{query}</span></h2>
-            <div className="movies-container">
-            {movies.length === 0 && <p>Carregando...</p>}
-            {movies.length > 0 && movies.map((movie) => <MovieCard key={movie.id} movie={movie}/>)}
-            </div>
-        </div>
+        <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <Typography variant="h2" gutterBottom sx={{color:"aliceblue", fontSize: "2rem", textAlign: "center", margin: "4rem 0 1rem"}}>
+                    Resultados para: <span style={{color:"#7b5eb6"}}>{query}</span>
+                </Typography>
+            </Grid>
+            <Grid 
+            item xs={12} 
+            sx={{ 
+                display: "flex", 
+                flexWrap: "wrap", 
+                justifyContent: 'center', 
+                padding: "2rem", 
+                maxWidth: "1200px", 
+                margin: "2 auto" 
+            }}>
+                {movies.length === 0 && <p>Carregando...</p>}
+                {movies.length > 0 &&
+                movies.map((movie) => 
+                <MovieCard key={movie.id} movie={movie} /> )}
+            </Grid>
+        </Grid>
     )
 }
