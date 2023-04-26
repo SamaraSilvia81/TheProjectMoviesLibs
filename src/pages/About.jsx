@@ -37,6 +37,7 @@ export const About = () => {
               <Button
                 sx={{ 
                   backgroundColor: "#653DB6", 
+                  marginTop: 3,
                   minWidth: 200, 
                   '&:hover': { 
                     backgroundColor: '#7b5eb6', 
