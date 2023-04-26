@@ -1,20 +1,28 @@
-import { useState, useEffect} from "react"
+import { useState, useEffect } from "react";
 import { MovieCard } from "../components/MovieCard";
 import { Grid, Typography } from '@mui/material';
+import AlertMessage from '../pages/AlertMessage';
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export const Movies = () => {
 
-    const [topMovies,setTopMovies] = useState([])
-    
+    const [topMovies, setTopMovies] = useState([]);
+    const [typeMessage, setTypeMessage] = useState('');
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
     // Vai fazer uma requisição
     const getTopRatedMovies = async (url) => {
-        const res = await fetch(url);
-        const data = await res.json();
-        setTopMovies(data.results);
-    }
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            setTopMovies(data.results);
+            setTypeMessage('success');
+        } catch (error) {
+            setTypeMessage('error');
+        }
+    };
 
     // É chamado quando a página renderiza
     useEffect(() => {
@@ -22,11 +30,30 @@ export const Movies = () => {
         getTopRatedMovies(topRatedURL)
     },[])
 
+    // Configura a mensagem de sucesso
+    useEffect(() => {
+        if (topMovies.length > 0) {
+            const timer = setTimeout(() => setShowSuccessMessage(false), 600);
+            setShowSuccessMessage(true);
+            return () => clearTimeout(timer);
+        }
+    }, [topMovies]);
+
     return ( 
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Typography variant="h2" gutterBottom sx={{color:"aliceblue", fontSize: "2rem", textAlign: "center", margin: "4rem 0 1rem"}}>
-                Top 10 Melhores Filmes
+                {typeMessage === 'error' && <AlertMessage severity="error" message="Erro ao buscar filmes. Tente novamente mais tarde." sx={{width: "12px"}}/>}
+                {showSuccessMessage && <AlertMessage severity="success" message="Filmes carregados com sucesso." />}
+                {topMovies.length === 0 && <AlertMessage severity="warning" message="Nenhum filme encontrado" />}
+                <Typography 
+                    variant="h2"
+                    gutterBottom 
+                    sx={{
+                        color:"aliceblue", 
+                        fontSize: "2rem", 
+                        textAlign: "center", 
+                        margin: "4rem 0 1rem"}}>
+                    Top 10 Melhores Filmes
                 </Typography>
             </Grid>
             <Grid 
@@ -39,7 +66,6 @@ export const Movies = () => {
                 maxWidth: "1200px", 
                 margin: "2 auto" 
             }}>
-                {topMovies.length === 0 && <p>Carregando...</p>}
                 {topMovies.length > 0 &&
                 topMovies.map((movie) => 
                 <MovieCard key={movie.id} movie={movie} /> )}
