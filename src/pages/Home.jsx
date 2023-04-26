@@ -47,7 +47,16 @@ export const Home = () => {
           "The first rule of Fight Club is: You do not talk about Fight Club."
         </Typography>
         <Button
-          sx={{ backgroundColor: "#653DB6", minWidth: 200, '&:hover': { backgroundColor: '#7b5eb6', color: "#ffff" } }}
+          sx={{ 
+            backgroundColor: "#653DB6", 
+            minWidth: 200, 
+            '&:hover': { 
+              backgroundColor: '#7b5eb6', 
+              color: "#ffff",
+              transition: 'all 0.3s ease-in-out',
+              transform: 'scale(1.05)'
+            }
+          }}
           variant="contained"
           size="large"
           component="a"
