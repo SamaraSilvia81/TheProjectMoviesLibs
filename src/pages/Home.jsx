@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ProductHeroLayout from './LayoutHome';
@@ -33,30 +34,30 @@ export const Home = () => {
   };
 
   return (
-    <ProductHeroLayout sxBackground={backgroundImageStyle}>
-      <Typography color="inherit" align="center" variant="h2" marked="center">
-        Movies Library
-      </Typography>
-      <Typography
-        color="inherit"
-        align="center"
-        variant="h5"
-        sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
-      >
-        "The first rule of Fight Club is: You do not talk about Fight Club."
-      </Typography>
-      <Button
-        sx={{ backgroundColor: "#653DB6", minWidth: 200, '&:hover': { backgroundColor: '#7b5eb6', color: "#ffff" } }}
-        variant="contained"
-        size="large"
-        component="a"
-        href="/movies/"
-      >
-        Movies
-      </Button>
-      <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
-        Discover the experience
-      </Typography>
-    </ProductHeroLayout>
+      <ProductHeroLayout sxBackground={backgroundImageStyle}>
+        <Typography color="inherit" align="center" variant="h2" marked="center">
+          Movies Library
+        </Typography>
+        <Typography
+          color="inherit"
+          align="center"
+          variant="h5"
+          sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
+        >
+          "The first rule of Fight Club is: You do not talk about Fight Club."
+        </Typography>
+        <Button
+          sx={{ backgroundColor: "#653DB6", minWidth: 200, '&:hover': { backgroundColor: '#7b5eb6', color: "#ffff" } }}
+          variant="contained"
+          size="large"
+          component="a"
+          href="/movies/"
+        >
+          Movies
+        </Button>
+        <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
+          Discover the experience
+        </Typography>
+      </ProductHeroLayout>
   );
 }
