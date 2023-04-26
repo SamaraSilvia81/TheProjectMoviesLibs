@@ -18,7 +18,7 @@ export function MovieCard({movie, showLink = true}) {
     <Card 
       sx={{ 
         maxWidth: 345, 
-        marginBottom: 5, 
+        margin: "0 2rem 5rem",
         '&:hover': {
           transition: 'all 0.3s ease-in-out',
           transform: 'scale(1.05)',

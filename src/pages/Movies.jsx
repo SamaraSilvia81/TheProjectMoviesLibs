@@ -1,7 +1,6 @@
 import { useState, useEffect} from "react"
 import { MovieCard } from "../components/MovieCard";
-
-import './MoviesGrid.css' 
+import { Grid, Typography } from '@mui/material';
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -24,12 +23,27 @@ export const Movies = () => {
     },[])
 
     return ( 
-        <div className="container">
-            <h2 className="title">Melhores Filmes:</h2>
-            <div className="movies-container">
-            {topMovies.length === 0 && <p>Carregando...</p>}
-            {topMovies.length > 0 && topMovies.map((movie) => <MovieCard key={movie.id} movie={movie}/>)}
-            </div>
-        </div>
+        <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <Typography variant="h2" gutterBottom sx={{color:"aliceblue", fontSize: "2rem", textAlign: "center", margin: "4rem 0 1rem"}}>
+                Top 10 Melhores Filmes
+                </Typography>
+            </Grid>
+            <Grid 
+            item xs={12} 
+            sx={{ 
+                display: "flex", 
+                flexWrap: "wrap", 
+                justifyContent: 'center', 
+                padding: "2rem", 
+                maxWidth: "1200px", 
+                margin: "2 auto" 
+            }}>
+                {topMovies.length === 0 && <p>Carregando...</p>}
+                {topMovies.length > 0 &&
+                topMovies.map((movie) => 
+                <MovieCard key={movie.id} movie={movie} /> )}
+            </Grid>
+        </Grid>
     )
 }
