@@ -17,15 +17,16 @@ export const Movies = () => {
 
     // Vai fazer uma requisição
     const getTopRatedMovies = async (url) => {
-        try {
+        try{
+            setLoading(true);
             const res = await fetch(url);
             const data = await res.json();
             setTopMovies(data.results);
             setTypeMessage('success');
-            setLoading(false);
         } catch (error) {
             setTypeMessage('error');
-            setLoading(false);
+        } finally {
+            setLoading(false); // Mudar o valor de loading para falso
         }
     };
 
@@ -71,13 +72,12 @@ export const Movies = () => {
                 maxWidth: "1200px", 
                 margin: "2 auto" 
             }}>
-                {loading ? (
-                  <Button disabled variant="outlined" loadingPosition="start" sx={{ mt: 3, marginTop: 25}}>
-                    <CircularProgress size={24} sx={{ mr: 1 }} />
-                  </Button>
+                {topMovies.length > 0 ? (
+                    topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
                 ) : (
-                  topMovies.map((movie) => 
-                  <MovieCard key={movie.id} movie={movie} /> )
+                    <Button disabled variant="outlined" loadingPosition="start" sx={{ mt: 3, margin: 25, paddingLeft: 3}}>
+                        <CircularProgress size={24} sx={{ mr: 1 }} />
+                    </Button>
                 )}
             </Grid>
         </Grid>

@@ -20,18 +20,21 @@ export const Search = () => {
     const [loading, setLoading] = useState(true);
 
     // Vai fazer uma requisição
-     const getSearchedMovies = async (url) => {
+    const getSearchedMovies = async (url) => {
         try{
-            const res = await fetch(url);
-            const data = await res.json();
-            setMovies(data.results);
-            setTypeMessage('success');
-            setLoading(false);
+          setLoading(true);
+          const res = await fetch(url);
+          const data = await res.json();
+          setMovies(data.results);
+          setTypeMessage('success');
+          setLoading(false);
         } catch (error) {
-            setTypeMessage('error');
+          setTypeMessage('error');
+        } finally {
+          setLoading(false); // Mudar o valor de loading para falso
         }
     }
-
+      
     // É chamado quando a página renderiza
     useEffect(() => {
         const searchWithQuery = `${searchURL}?api_key=${apiKey}&query=${query}`
@@ -67,13 +70,12 @@ export const Search = () => {
                 maxWidth: "1200px", 
                 margin: "2 auto" 
             }}>
-                {loading ? (
-                  <Button disabled variant="outlined" loadingPosition="start" sx={{ mt: 3, marginTop: 25}}>
-                    <CircularProgress size={24} sx={{ mr: 1 }} />
-                  </Button>
+                {movies.length > 0 ? (
+                    movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
                 ) : (
-                  movies.map((movie) => 
-                  <MovieCard key={movie.id} movie={movie} /> )
+                    <Button disabled variant="outlined" loadingPosition="start" sx={{ mt: 3, margin: 25, paddingLeft: 3}}>
+                        <CircularProgress size={24} sx={{ mr: 1 }} />
+                    </Button>
                 )}
             </Grid>
         </Grid>

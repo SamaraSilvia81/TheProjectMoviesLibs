@@ -23,14 +23,16 @@ export const Movie = () => {
 
     const getMovie = async (url) => {
         try{
+            setLoading(true);
             const res = await fetch(url);
             const data = await res.json();
             setMovie(data);
             setTypeMessage('success');
-            setLoading(false);
         } catch(e){
             setTypeMessage('error');
             setLoading(false);
+        } finally {
+            setLoading(false); // Mudar o valor de loading para falso
         }
     }
 
@@ -60,6 +62,11 @@ export const Movie = () => {
             {typeMessage === 'error' && <AlertMessage severity="error" message="Erro ao buscar filmes. Tente novamente mais tarde."/>}
             {typeMessage === 'success' && showSuccessMessage && <AlertMessage severity="success" message="Filme carregado com sucesso."/>}
             {!movie && <AlertMessage severity="warning" message="Nenhum detalhe de filme encontrado" />}
+            {movie?.length > 0 ? (
+                movie.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+            ) : (
+                loading && <CircularProgress size={24} sx={{ mr: 1 }} />
+            )}
             <Grid container spacing={4} alignItems="center">
             <div className="movie-page">
                 <div className="movie-details-container">
