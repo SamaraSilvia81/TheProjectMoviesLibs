@@ -22,7 +22,7 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await fetch(imageURL);
+      const response = await fetch(`${imageURL}api_key=${apiKey}`);
       const data = await response.json();
       const moviesWithTagline = await Promise.all(
         data.results.map(async (movie) => {
