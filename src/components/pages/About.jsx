@@ -27,12 +27,12 @@ export const About = () => {
               </Typography>
               <hr style={{ opacity: 0.5, margin: '1.5rem 0' }} />
               <Typography variant="body1" color="#ffff" gutterBottom>
-                Olá! Eu sou Samara. Eu tenho 19 anos e já fazem quase 2 anos que estou atuando na área de programação.
-                A cada dia que passa eu vou me superando e amando tecnologia cada vez mais. Por agora eu estou mais apegada ao front, mas também aprecio o back-end.
+                HI! What's Up ?? I am Samara. I'm 19 years old and it's been almost 2 years since I've been working in the programming area.
+                With each passing day I am surpassing myself and loving technology more and more. For now I'm more attached to the front, but I also appreciate the back end.
                 <br /><br />
-                No que diz respeito, ao projeto <span style={{color: '#7b5eb6'}}>Movies Library</span> ele, como o próprio nome já diz, é uma biblioteca de filmes dos mais variados gêneros. Nesse site, o usuário pode pesquisar por seu filme, visualizar os considerados Top 10, vê detalhes dos filmes e muito mais.
+                As far as the project is concerned, <span style={{color: '#7b5eb6'}}>Movies Library</span> it, as its name implies, is a library of films of the most varied genres. On this site, the user can search for your movie, view the considered Top 10, see details of the movies and more.
                 <br /><br />
-                O objetivo é proporcionar um ambiente de diversão e ao mesmo tempo entretenimento. Espero que gostem!!!
+                The goal is to provide an environment of fun and at the same time entertainment. Hope you enjoy!!!
               </Typography>
               <Button
                 sx={{ 

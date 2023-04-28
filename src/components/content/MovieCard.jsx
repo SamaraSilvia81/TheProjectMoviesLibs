@@ -47,7 +47,7 @@ export function MovieCard({movie, showLink = true}) {
           variant="contained" 
           color="primary"
         >
-          Detalhes
+          Details
         </Button>
       </Link>}
       </CardActions>

@@ -60,7 +60,7 @@ export const Movies = () => {
                         fontSize: "2rem", 
                         textAlign: "center", 
                         margin: "4rem 0 1rem"}}>
-                    Top 10 Melhores Filmes
+                    Top 10 Best Movies
                 </Typography>
             </Grid>
             <Grid 

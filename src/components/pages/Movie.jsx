@@ -135,7 +135,7 @@ export const Movie = () => {
                                     <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
                                         <CardContent>
                                             <Typography variant="h6" component="h3" gutterBottom>
-                                                <BsWallet2 color='#7b5eb6' fontSize="1.5rem"/> Orçamento
+                                                <BsWallet2 color='#7b5eb6' fontSize="1.5rem"/> Budget
                                             </Typography>
                                             <Typography>
                                                 {formatCurrency(movie.budget)}
@@ -145,7 +145,7 @@ export const Movie = () => {
                                     <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
                                         <CardContent>
                                             <Typography variant="h6" component="h3" gutterBottom>
-                                                <BsGraphUp color='#7b5eb6' fontSize="1.5rem"/> Faturamento
+                                                <BsGraphUp color='#7b5eb6' fontSize="1.5rem"/> Revenue
                                             </Typography>
                                             <Typography>
                                                 {formatCurrency(movie.revenue)}
@@ -155,7 +155,7 @@ export const Movie = () => {
                                     <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
                                         <CardContent>
                                             <Typography variant="h6" component="h3" gutterBottom>
-                                                <BsHourglassSplit color='#7b5eb6' fontSize="1.5rem"/> Duração
+                                                <BsHourglassSplit color='#7b5eb6' fontSize="1.5rem"/> Runtime
                                             </Typography>
                                             <Typography>{movie.runtime} minutos</Typography>
                                         </CardContent>
@@ -163,7 +163,7 @@ export const Movie = () => {
                                     <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
                                         <CardContent>
                                         <Typography variant="h6" component="h3" gutterBottom>
-                                            <BsFillFileEarmarkTextFill color='#7b5eb6' fontSize="1.5rem"/> Descrição
+                                            <BsFillFileEarmarkTextFill color='#7b5eb6' fontSize="1.5rem"/> Overview
                                         </Typography>
                                             <Typography>{movie.overview}</Typography>
                                         </CardContent>
@@ -214,7 +214,9 @@ export const Movie = () => {
                                             ))}
                                         </Grid>    
                                     </CardContent>                          
-                                ) : (<Typography variant="h6" gutterBottom color="#fff" padding="2rem"> Don't Have a Review </Typography> )}
+                                ) : (<Typography variant="h6" gutterBottom color="#fff" padding="2rem"> 
+                                    Don't Have a Review 
+                                </Typography> )}
                             </Card>
                         </Grid>
                     </Container>

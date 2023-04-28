@@ -68,7 +68,7 @@ export const Home = () => {
         variant="h5"
         sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
       >
-        {movies[currentImage]?.tagline ? movies[currentImage].tagline : 'Seja bem-vindo a um mundo de diversão e entretenimento'}
+        {movies[currentImage]?.tagline ? movies[currentImage].tagline : 'Welcome to a world of fun and entertainment'}
       </Typography>
       <Button
         sx={{
