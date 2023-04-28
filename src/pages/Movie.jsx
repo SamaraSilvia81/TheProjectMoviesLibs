@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { BsGraphUp,  BsWallet2,  BsHourglassSplit, BsFillFileEarmarkTextFill } from 'react-icons/bs';
-import { Card, CardContent, Grid, Typography, Button, CircularProgress } from '@mui/material';
+import { Card, CardContent, Grid, Typography, Container, CircularProgress } from '@mui/material';
 
 import { MovieCard } from "../components/MovieCard"
 import AlertMessage from '../pages/AlertMessage';
@@ -65,77 +65,60 @@ export const Movie = () => {
             ) : (
                 loading && <CircularProgress size={24} sx={{ mr: 1 }} />
             )}
-            <Grid container spacing={4} alignItems="center">
-                <Grid item xs={12} sm={6} md={6} lg={4} sx={{
-                    color: "#FFFF",
-                    display: "flex",
-                    flexDirection: "column",
-                    maxWidth: "60%",
-                    margin: "8rem 15rem 1rem",
-                    justifyContent: "center"
-                }}>
-                    <Grid item xs={12} sm={6} md={6} lg={8} sx={{
-                        display: "flex",
-                        gap: "2rem",
-                        alignItems: "flex-start",
-                        marginBottom: "4rem",
-                        justifyContent: "center"
-                    }}>
+            <Container maxWidth="xl" sx={{ paddingTop: '2rem', overflow:"hidden"}}>
+                <Grid container spacing={4} alignItems="center" margin="3rem 0" overflow-x="auto" >
+                    <Grid container spacing={5} sx={{ alignItems: 'center', justifyContent: "center", display: 'flex', flexWrap: 'wrap'}}>
                         {movie && (
                         <>
-                            <Grid item xs={6} sx={{marginTop: '0.5rem'}}>
+                            <Grid item xs={12} md={4.5} sx={{order: { xs: 2, md: 1 }}}>
                                 <MovieCard key={movie.id} movie={movie} showLink={false}/>
                             </Grid>
-                            <Grid container spacing={2} sx={{ display:"flex", flexDirection: "column", gap: "1rem"}}>
-                                <Grid item xs={12}>
-                                    <Typography variant="h4" component="h2" sx={{fontSize: '1.5rem'}} gutterBottom>
-                                        {movie.tagline}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={12} sm={6} md={4}>
-                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
-                                        <CardContent>
-                                            <Typography variant="h6" component="h3" gutterBottom>
-                                            <BsWallet2/> Orçamento
-                                            </Typography>
-                                            <Typography>
-                                            {formatCurrency(movie.budget)}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
-                                        <CardContent>
-                                            <Typography variant="h6" component="h3" gutterBottom>
-                                            <BsGraphUp/> Faturamento
-                                            </Typography>
-                                            <Typography>
-                                            {formatCurrency(movie.revenue)}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
-                                        <CardContent>
-                                            <Typography variant="h6" component="h3" gutterBottom>
-                                            <BsHourglassSplit/> Duração
-                                            </Typography>
-                                            <Typography>{movie.runtime} minutos</Typography>
-                                        </CardContent>
-                                    </Card>
-                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", width: '400%'}} >
-                                        <CardContent>
+                            <Grid container spacing={5} xs={12} md={6} sx={{ flexDirection: { xs: 'column', md: 'row' }, order: { xs: 2, md: 1 }, gap:"1rem", maxWidth: "65%"}}>
+                                <Typography variant="h4" component="h2" sx={{fontSize: '1.5rem', margin: "3rem 0", width: "100%"}} gutterBottom>
+                                    {movie.tagline}
+                                </Typography>
+                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
+                                    <CardContent>
                                         <Typography variant="h6" component="h3" gutterBottom>
-                                            <BsFillFileEarmarkTextFill/> Descrição
+                                            <BsWallet2 color='#7b5eb6' fontSize="1.5rem"/> Orçamento
                                         </Typography>
-                                        <Typography>{movie.overview}</Typography>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>          
+                                        <Typography>
+                                            {formatCurrency(movie.budget)}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
+                                    <CardContent>
+                                        <Typography variant="h6" component="h3" gutterBottom>
+                                            <BsGraphUp color='#7b5eb6' fontSize="1.5rem"/> Faturamento
+                                        </Typography>
+                                        <Typography>
+                                            {formatCurrency(movie.revenue)}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
+                                    <CardContent>
+                                        <Typography variant="h6" component="h3" gutterBottom>
+                                            <BsHourglassSplit color='#7b5eb6' fontSize="1.5rem"/> Duração
+                                        </Typography>
+                                        <Typography>{movie.runtime} minutos</Typography>
+                                    </CardContent>
+                                </Card>
+                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
+                                    <CardContent>
+                                    <Typography variant="h6" component="h3" gutterBottom>
+                                        <BsFillFileEarmarkTextFill color='#7b5eb6' fontSize="1.5rem"/> Descrição
+                                    </Typography>
+                                    <Typography>{movie.overview}</Typography>
+                                    </CardContent>
+                                </Card>
                             </Grid>
-                            </>
+                        </>
                         )}
                     </Grid>
                 </Grid>
-            </Grid>
+            </Container>
         </>
     )    
 }
