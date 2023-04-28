@@ -6,8 +6,6 @@ import { Card, CardContent, Grid, Typography, Button, CircularProgress } from '@
 import { MovieCard } from "../components/MovieCard"
 import AlertMessage from '../pages/AlertMessage';
 
-import './Movie.css'
-
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -68,62 +66,75 @@ export const Movie = () => {
                 loading && <CircularProgress size={24} sx={{ mr: 1 }} />
             )}
             <Grid container spacing={4} alignItems="center">
-            <div className="movie-page">
-                <div className="movie-details-container">
-                    {movie && (
-                    <>
-                        <Grid item xs={6} sx={{marginTop: '0.5rem'}}>
-                            <MovieCard key={movie.id} movie={movie} showLink={false}/>
-                        </Grid>
-                        <Grid container spacing={2} sx={{ display:"flex", flexDirection: "column", gap: "1rem"}}>
-                            <Grid item xs={12}>
-                                <Typography variant="h4" component="h2" sx={{fontSize: '1.5rem'}} gutterBottom>
-                                    {movie.tagline}
-                                </Typography>
+                <Grid item xs={12} sm={6} md={6} lg={4} sx={{
+                    color: "#FFFF",
+                    display: "flex",
+                    flexDirection: "column",
+                    maxWidth: "60%",
+                    margin: "8rem 15rem 1rem",
+                    justifyContent: "center"
+                }}>
+                    <Grid item xs={12} sm={6} md={6} lg={8} sx={{
+                        display: "flex",
+                        gap: "2rem",
+                        alignItems: "flex-start",
+                        marginBottom: "4rem",
+                        justifyContent: "center"
+                    }}>
+                        {movie && (
+                        <>
+                            <Grid item xs={6} sx={{marginTop: '0.5rem'}}>
+                                <MovieCard key={movie.id} movie={movie} showLink={false}/>
                             </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
-                                    <CardContent>
-                                        <Typography variant="h6" component="h3" gutterBottom>
-                                        <BsWallet2/> Orçamento
-                                        </Typography>
-                                        <Typography>
-                                        {formatCurrency(movie.budget)}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
-                                    <CardContent>
-                                        <Typography variant="h6" component="h3" gutterBottom>
-                                        <BsGraphUp/> Faturamento
-                                        </Typography>
-                                        <Typography>
-                                        {formatCurrency(movie.revenue)}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
-                                    <CardContent>
-                                        <Typography variant="h6" component="h3" gutterBottom>
-                                        <BsHourglassSplit/> Duração
-                                        </Typography>
-                                        <Typography>{movie.runtime} minutos</Typography>
-                                    </CardContent>
-                                </Card>
-                                <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", width: '400%'}} >
-                                    <CardContent>
-                                    <Typography variant="h6" component="h3" gutterBottom>
-                                        <BsFillFileEarmarkTextFill/> Descrição
+                            <Grid container spacing={2} sx={{ display:"flex", flexDirection: "column", gap: "1rem"}}>
+                                <Grid item xs={12}>
+                                    <Typography variant="h4" component="h2" sx={{fontSize: '1.5rem'}} gutterBottom>
+                                        {movie.tagline}
                                     </Typography>
-                                    <Typography>{movie.overview}</Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>          
-                        </Grid>
-                        </>
-                    )}
-                </div>
-            </div>
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={4}>
+                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
+                                        <CardContent>
+                                            <Typography variant="h6" component="h3" gutterBottom>
+                                            <BsWallet2/> Orçamento
+                                            </Typography>
+                                            <Typography>
+                                            {formatCurrency(movie.budget)}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
+                                        <CardContent>
+                                            <Typography variant="h6" component="h3" gutterBottom>
+                                            <BsGraphUp/> Faturamento
+                                            </Typography>
+                                            <Typography>
+                                            {formatCurrency(movie.revenue)}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff",marginBottom: "1rem", width: '400%'}} >
+                                        <CardContent>
+                                            <Typography variant="h6" component="h3" gutterBottom>
+                                            <BsHourglassSplit/> Duração
+                                            </Typography>
+                                            <Typography>{movie.runtime} minutos</Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", width: '400%'}} >
+                                        <CardContent>
+                                        <Typography variant="h6" component="h3" gutterBottom>
+                                            <BsFillFileEarmarkTextFill/> Descrição
+                                        </Typography>
+                                        <Typography>{movie.overview}</Typography>
+                                        </CardContent>
+                                    </Card>
+                                </Grid>          
+                            </Grid>
+                            </>
+                        )}
+                    </Grid>
+                </Grid>
             </Grid>
         </>
     )    
