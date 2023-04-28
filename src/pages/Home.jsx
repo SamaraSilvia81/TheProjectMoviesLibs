@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import ProductHeroLayout from './LayoutHome';
 
 const imageURL = import.meta.env.VITE_IMG_SLINK;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 export const Home = () => {
 
@@ -26,7 +27,7 @@ export const Home = () => {
       const moviesWithTagline = await Promise.all(
         data.results.map(async (movie) => {
           const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.id}?api_key=916eca463064fe2e8f5bf956de8e6682&language=en-US`
+            `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}&language=en-US`
           );
           const data = await response.json();
           return {
@@ -93,19 +94,21 @@ export const Home = () => {
   );
 
   return (
-    <ProductHeroLayout sxBackground={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movies[currentImage]?.backdrop_path})` }}>
-      <Slider {...sliderSettings}>
-        {movies.map((movie) => (
-          <div key={movie.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
-              alt={movie.title}
-              style={{maxWidth: "1px", height: "1px"}}
-            />
-          </div>
-        ))}
-      </Slider>
-      <HeroText />
-  </ProductHeroLayout>
+    <div style={{ overflowX: 'hidden', overflow: "hidden"}}>
+      <ProductHeroLayout sxBackground={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movies[currentImage]?.backdrop_path})` }}>
+        <Slider {...sliderSettings} sx={{maxWidth: "100%"}}>
+          {movies.map((movie) => (
+            <div key={movie.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+                alt={movie.title}
+                style={{maxWidth: "1px", height: "1px"}}
+              />
+            </div>
+          ))}
+        </Slider>
+        <HeroText />
+    </ProductHeroLayout>
+  </div>
   );
 };
