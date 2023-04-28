@@ -4,11 +4,11 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import App from './App';
-import { Home } from './pages/Home';
-import { Movies } from './pages/Movies';
-import { About } from './pages/About';
-import { Movie } from './pages/Movie';
-import { Search } from './pages/Search';
+import { Home } from './components/pages/Home'
+import { Movies } from './components/pages/Movies';
+import { About } from './components/pages/About';
+import { Movie } from './components/pages/Movie';
+import { Search } from './components/pages/Search';
 
 import './index.css';
 

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import { BsGraphUp,  BsWallet2,  BsHourglassSplit, BsFillFileEarmarkTextFill } from 'react-icons/bs';
 import { FaStar } from 'react-icons/Fa'
+
 import { Card, CardContent, Grid, Typography, Container, CircularProgress } from '@mui/material';
 
-import { MovieCard } from "../components/MovieCard"
-import AlertMessage from '../pages/AlertMessage';
+import { MovieCard } from "../content/MovieCard"
+import { AlertMessage } from '../content/AlertMessage';
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;

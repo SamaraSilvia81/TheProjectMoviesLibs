@@ -1,6 +1,6 @@
 import { Alert, AlertTitle } from '@mui/material';
 
-const AlertMessage = ({ severity, message }) => {
+export const AlertMessage = ({ severity, message }) => {
   return (
     <Alert severity={severity}>
       <AlertTitle>{severity}</AlertTitle>
@@ -8,5 +8,3 @@ const AlertMessage = ({ severity, message }) => {
     </Alert>
   );
 };
-
-export default AlertMessage;

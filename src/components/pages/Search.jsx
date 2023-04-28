@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
-import { MovieCard } from "../components/MovieCard"
+
 import { Grid, Typography, Button, CircularProgress } from '@mui/material';
 
-import AlertMessage from '../pages/AlertMessage';
+import { MovieCard } from "../content/MovieCard"
+import { AlertMessage } from '../content/AlertMessage';
 
 const searchURL = import.meta.env.VITE_SEARCH
 const apiKey = import.meta.env.VITE_API_KEY

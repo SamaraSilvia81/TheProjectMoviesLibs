@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ProductHeroLayout from './LayoutHome';
+
+import ProductHeroLayout from '../layout/LayoutHome';
 
 const imageURL = import.meta.env.VITE_IMG_SLINK;
 const apiKey = import.meta.env.VITE_API_KEY;
