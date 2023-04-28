@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { BsGraphUp,  BsWallet2,  BsHourglassSplit, BsFillFileEarmarkTextFill } from 'react-icons/bs';
+import { FaStar } from 'react-icons/Fa'
 import { Card, CardContent, Grid, Typography, Container, CircularProgress } from '@mui/material';
 
 import { MovieCard } from "../components/MovieCard"
@@ -74,7 +75,13 @@ export const Movie = () => {
                                 <MovieCard key={movie.id} movie={movie} showLink={false}/>
                             </Grid>
                             <Grid container spacing={5} xs={12} md={6} sx={{ flexDirection: { xs: 'column', md: 'row' }, order: { xs: 2, md: 1 }, gap:"1rem", maxWidth: "65%"}}>
-                                <Typography variant="h4" component="h2" sx={{fontSize: '1.5rem', margin: "3rem 0", width: "100%"}} gutterBottom>
+                                <Typography variant="h3" component="h2" sx={{width: "100%"}}>
+                                   {movie.title}
+                                </Typography>
+                                <Typography variant="h6" sx={{width: "100%"}}>
+                                    <FaStar color="#7b5eb6"/> {movie.vote_average}
+                                </Typography>
+                                <Typography variant="h5" component="h2" sx={{margin: "3rem 0", width: "100%", color: "#836ab5"}} gutterBottom>
                                     {movie.tagline}
                                 </Typography>
                                 <Card variant="outlined" sx={{ backgroundColor:"#2a2a2e", color: "#ffff", marginBottom: "1rem", flexGrow: 1 }} >
