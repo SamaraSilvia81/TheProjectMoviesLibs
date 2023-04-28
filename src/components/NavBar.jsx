@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -164,11 +164,13 @@ export function NavBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none'},
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page}  onClick={() => navigateToPage(page)}>
+                <MenuItem key={page} sx={{'&:hover':{
+                  backgroundColor: "rgba(0, 0, 0, 0.08)"
+                }}} onClick={() => navigateToPage(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -193,12 +195,15 @@ export function NavBar() {
             />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }}}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={() => navigateToPage(page)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block',
+                '&:hover': {
+                  backgroundColor: "rgba(0, 0, 0, 0.15)" // "#653DB6" ou rgba(101, 61, 182, 0.25)
+                }}}
               >
                 {page}
               </Button>
@@ -227,7 +232,7 @@ export function NavBar() {
 
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Profile Github" src={user.avatar} />
+                <Avatar alt="ProfileGithub" src={user.avatar} />
               </IconButton>
             </Tooltip>
 

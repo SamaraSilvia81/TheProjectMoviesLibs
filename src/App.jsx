@@ -3,8 +3,6 @@ import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import './App.css';
-
 const theme = createTheme({
   typography: {
     fontFamily: [
