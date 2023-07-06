@@ -77,7 +77,7 @@ export function NavBar() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://api.github.com/users/samarasilvia21')
+      const response = await fetch('https://api.github.com/users/samara-bidweb')
       const data = await response.json();
       console.log("DATAS: ", data);
       setUser({
